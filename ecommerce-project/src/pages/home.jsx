@@ -1,10 +1,10 @@
-function HomePage() {
+import { HomeHeader } from "../components/homeHeader"
+import './home.css'
+export function Home() {
 
     return (
-        <nav>
-            <div className="left">
-                Ecommerce Store
-            </div>
-        </nav>
+        <>
+            <HomeHeader />
+        </>
     )
 }
