@@ -29,8 +29,15 @@
     padding: 10px 22px;
     font-weight: 700;
     cursor: pointer;
+
 }
 
 .hero-button:hover {
     background-color: #a70202;
+}
+
+.hero-button a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
 }

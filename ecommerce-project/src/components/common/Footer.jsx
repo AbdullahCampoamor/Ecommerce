@@ -17,16 +17,16 @@ export function Footer() {
                     </p>
                     <div className="social-links">
                         <a href="#" className="social-icon">
-                            <img src="/public/icons/email.png" alt="Email" />
+                            <img src="/icons/email.png" alt="Email" />
                         </a>
                         <a href="#" className="social-icon">
-                            <img src="/public/icons/facebook.png" alt="Facebook" />
+                            <img src="/icons/facebook.png" alt="Facebook" />
                         </a>
                         <a href="#" className="social-icon">
-                            <img src="/public/icons/instagram.png" alt="Instagram" />
+                            <img src="/icons/instagram.png" alt="Instagram" />
                         </a>
                         <a href="#" className="social-icon">
-                            <img src="/public/icons/twitter.png" alt="Twitter" />
+                            <img src="/icons/twitter.png" alt="Twitter" />
                         </a>
                     </div>
                 </div>

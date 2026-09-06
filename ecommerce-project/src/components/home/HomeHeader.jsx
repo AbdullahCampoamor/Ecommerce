@@ -1,15 +1,16 @@
 import logo from "../../assets/images/logo.png"
+import { Link } from "react-router"
 import './homeHeader.css'
 
 export function HomeHeader() {
 
     return (
         <>
-            <title >Home</title>
+
             <header className="home-header">
 
                 <div className="left-part">
-                    <img className="logo" src={logo} />
+                    <Link to="/"><img className="logo" src={logo} /></Link>
 
                 </div>
 
@@ -17,10 +18,10 @@ export function HomeHeader() {
 
                 <nav className="right-part">
                     <ul className="link-list">
-                        <li className="nav-link"><a >Products</a></li>
-                        <li className="nav-link"><a >Cart</a></li>
-                        <li className="nav-link"><a >Orders</a></li>
-                        <li className="nav-link"><a >Login</a></li>
+                        <li className="nav-link"><Link to="/products">Products</Link></li>
+                        <li className="nav-link"><Link to="/cart">Cart</Link></li>
+                        <li className="nav-link"><Link to="/orders">Orders</Link></li>
+                        <li className="nav-link"><Link to="/login">Login</Link></li>
                     </ul>
 
                 </nav>

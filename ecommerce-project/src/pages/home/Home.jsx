@@ -8,6 +8,8 @@ export function Home() {
 
     return (
         <>
+            <title>Home</title>
+
             <HomeHeader />
             <Hero />
             <Categories />
