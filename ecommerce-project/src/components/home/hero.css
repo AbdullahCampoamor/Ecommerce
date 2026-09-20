@@ -21,9 +21,9 @@
 .hero-button {
     display: inline-block;
     margin-top: 18px;
-    background-color: #d60000;
+    background-color: #9c1111;
     color: #ffffff;
-    border: 1px solid #990000;
+    border: none;
     border-radius: 15px;
 
     padding: 10px 22px;
@@ -33,7 +33,7 @@
 }
 
 .hero-button:hover {
-    background-color: #a70202;
+    background-color: #111827;
 }
 
 .hero-button a {
