@@ -4,7 +4,7 @@ import { useState } from "react";
 import logo from "../../assets/images/logo.png";
 import './productsHeader.css';
 
-export function ProductsHeader() {
+export function ProductsHeader({ cart }) {
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleSearch = (e) => {
@@ -50,7 +50,7 @@ export function ProductsHeader() {
                     <li className="nav-link " >
                         <Link className="cart-link" to="/checkout">
                             <img className="cart-icon" src="/icons/checkout-icon.png" alt="Checkout" />
-                            <div className="cart-quantity">2</div>
+                            <div className="cart-quantity">{cart.length}</div>
                         </Link>
                     </li>
                     <li className="nav-link"><Link to="/orders">Orders</Link></li>

@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router"
 import { Home } from "./pages/home/Home"
-import { Products } from "./pages/Products"
+import { Products } from "./pages/products/Products"
 
 import './App.css'
 
