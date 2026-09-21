@@ -15,6 +15,11 @@ export function ProductsHeader({ cart }) {
         }
     };
 
+    let totalQuantity = 0;
+    cart.forEach((cartItem) => {
+        totalQuantity += cartItem.quantity;
+    });
+
     return (
         <header className="products-header">
 
@@ -50,7 +55,7 @@ export function ProductsHeader({ cart }) {
                     <li className="nav-link " >
                         <Link className="cart-link" to="/checkout">
                             <img className="cart-icon" src="/icons/checkout-icon.png" alt="Checkout" />
-                            <div className="cart-quantity">{cart.length}</div>
+                            <div className="cart-quantity">{totalQuantity}</div>
                         </Link>
                     </li>
                     <li className="nav-link"><Link to="/orders">Orders</Link></li>

@@ -35,14 +35,19 @@ export function Products() {
         ]*/
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
-    useEffect(() => {
 
-        axios.get('http://localhost:3000/api/products').then((response) => {
-            setProducts(response.data);
-        });
-        axios.get('http://localhost:3000/api/cart-items').then((response) => {
-            setCart(response.data);
-        });
+    const loadCart = async () => {
+        const response = await axios.get('http://localhost:3000/api/cart-items')
+        setCart(response.data);
+    }
+
+    const getProductsData = async () => {
+        const response = await axios.get('http://localhost:3000/api/products')
+        setProducts(response.data);
+    }
+    useEffect(() => {
+        getProductsData();
+        loadCart();
     }, [])
 
 
@@ -52,7 +57,7 @@ export function Products() {
             <ProductsHeader cart={cart} />
             <div className="products-grid">
                 {products.map((product) => (
-                    <Product key={product.id} product={product} />
+                    <Product key={product.id} product={product} loadCart={loadCart} />
                 ))}
             </div>
             <Footer />

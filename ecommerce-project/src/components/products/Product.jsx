@@ -1,12 +1,13 @@
 import axios from 'axios'
 import './product.css'
-export function Product({ product }) {
+export function Product({ product, loadCart }) {
 
     const addToCart = async () => {
         await axios.post('http://localhost:3000/api/cart-items', {
             productId: product.id,
             quantity: 1
         });
+        loadCart();
     }
 
     return (
