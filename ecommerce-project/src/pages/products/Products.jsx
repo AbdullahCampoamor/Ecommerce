@@ -48,8 +48,8 @@ export function Products() {
     useEffect(() => {
         getProductsData();
         loadCart();
-    }, [])
 
+    }, []);
 
     return (
         <>
