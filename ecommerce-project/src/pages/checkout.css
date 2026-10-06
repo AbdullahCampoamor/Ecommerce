@@ -115,10 +115,11 @@
     color: #9c1111;
 }
 
-.item-description {
+.delivery-date {
     margin: 0 0 18px;
     color: #4b5563;
     line-height: 1.6;
+    font-size: 1.1rem;
 }
 
 .delivery-options {
