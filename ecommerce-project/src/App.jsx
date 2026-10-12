@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router"
 import { Home } from "./pages/home/Home"
 import { Products } from "./pages/products/Products"
 import { Checkout } from "./pages/Checkout"
+import { Orders } from "./pages/Orders"
 import './App.css'
 import axios from "axios"
 import { useEffect, useState } from "react"
@@ -24,6 +25,7 @@ function App() {
       <Route index element={<Home />} />
       <Route path="/products" element={<Products cart={cart} loadCart={loadCart} />} />
       <Route path="/checkout" element={<Checkout cart={cart} loadCart={loadCart} />} />
+      <Route path="/orders" element={<Orders />} />
     </Routes>
 
   )

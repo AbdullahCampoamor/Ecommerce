@@ -1,7 +1,45 @@
+import { useEffect, useState } from "react"
 import axios from "axios"
 import dayjs from "dayjs"
 import { formatMoney } from "../../utlis/money"
+
 export function OrderSummary({ cart, deliveryOptions, loadCart }) {
+    const [quantityByProductId, setQuantityByProductId] = useState({})
+
+    useEffect(() => {
+        setQuantityByProductId((previous) => {
+            const next = { ...previous }
+
+            cart.forEach((cartItem) => {
+                next[cartItem.productId] = cartItem.quantity
+            })
+
+            return next
+        })
+    }, [cart])
+
+    const changeQuantity = (productId, changeAmount) => {
+        setQuantityByProductId((previous) => {
+            const currentQuantity = Number(previous[productId] ?? 1)
+            const nextQuantity = Math.max(1, currentQuantity + changeAmount)
+
+            return {
+                ...previous,
+                [productId]: nextQuantity,
+            }
+        })
+    }
+
+    const updateCartQuantity = async (cartItem) => {
+        const nextQuantity = Number(quantityByProductId[cartItem.productId] ?? cartItem.quantity)
+
+        if (nextQuantity < 1) {
+            return
+        }
+
+        await axios.put(`/api/cart-items/${cartItem.productId}`, { quantity: nextQuantity })
+        await loadCart()
+    }
 
     return (
         <div className="cart-panel">
@@ -13,6 +51,13 @@ export function OrderSummary({ cart, deliveryOptions, loadCart }) {
                     const delveryOptionSelected = deliveryOptions.find((deliveryOption) => {
                         return deliveryOption.id === cartItem.deliveryOptionId
                     })
+
+                    const quantity = Number(quantityByProductId[cartItem.productId] ?? cartItem.quantity)
+
+                    const deletCartItem = async () => {
+                        await axios.delete(`/api/cart-items/${cartItem.productId}`);
+                        await loadCart();
+                    }
 
                     return (
                         <div key={cartItem.id} className="cart-item">
@@ -32,13 +77,26 @@ export function OrderSummary({ cart, deliveryOptions, loadCart }) {
 
                                 <div className="cart-item-actions">
                                     <div className="quantity-box">
-                                        <button type="button" aria-label="Decrease quantity">-</button>
-                                        <span>{cartItem.quantity}</span>
-                                        <button type="button" aria-label="Increase quantity">+</button>
+                                        <button
+                                            type="button"
+                                            aria-label="Decrease quantity"
+                                            onClick={() => changeQuantity(cartItem.productId, -1)}
+                                            disabled={quantity <= 1}
+                                        >
+                                            -
+                                        </button>
+                                        <span>{quantity}</span>
+                                        <button
+                                            type="button"
+                                            aria-label="Increase quantity"
+                                            onClick={() => changeQuantity(cartItem.productId, 1)}
+                                        >
+                                            +
+                                        </button>
                                     </div>
 
-                                    <button type="button" className="link-button">Update</button>
-                                    <button type="button" className="link-button danger">Delete</button>
+                                    <button type="button" className="link-button" onClick={() => updateCartQuantity(cartItem)}>Update</button>
+                                    <button type="button" className="link-button danger" onClick={deletCartItem}>Delete</button>
                                 </div>
 
                                 <div className="delivery-options">
@@ -50,11 +108,10 @@ export function OrderSummary({ cart, deliveryOptions, loadCart }) {
                                                 priceString = `${formatMoney(deliveryOption.priceCents)}`
                                             }
                                             const updateDeliveryOption = async () => {
-                                                axios.put(`http://localhost:3000/api/cart-items/${cartItem.productId}`, {
+                                                await axios.put(`/api/cart-items/${cartItem.productId}`, {
                                                     deliveryOptionId: deliveryOption.id
-
-                                                });
-                                                loadCart();
+                                                })
+                                                await loadCart();
                                             }
                                             return (
                                                 <label key={deliveryOption.id} className="delivery-option" onClick={updateDeliveryOption}>
@@ -62,7 +119,6 @@ export function OrderSummary({ cart, deliveryOptions, loadCart }) {
                                                         checked={deliveryOption.id === cartItem.deliveryOptionId}
                                                         name={`delivery-option-${cartItem.productId}`}
                                                         onChange={() => { }}
-
                                                     />
                                                     <span> {dayjs(deliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM D')}</span>
                                                     <strong>{priceString}</strong>
