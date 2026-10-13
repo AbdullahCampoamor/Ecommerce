@@ -1,16 +1,50 @@
-# React + Vite
+# 🛒 E-Commerce Frontend Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A dynamic, modern e-commerce web application built with **React** and **Vite**. The client-side interface communicates asynchronously with a backend server via RESTful APIs to handle browsing products, shopping cart operations, order processing, and user authentication.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Key Features & Pages
 
-## React Compiler
+* **Home Page:** Featured collections, hero banners, dynamic navigation header, and page footer.
+* **Products Page:** Displays the catalog dynamically fetched from the API with filter and search capabilities.
+* **Shopping Cart:** Interactive cart management allowing users to update quantities, calculate real-time payment summaries, and proceed to checkout.
+* **Orders Page:** Displays past user orders and status updates formatted clearly.
+* **Login & Authentication Page:** Handles user login workflows and session management.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 🛠️ Tech Stack & Dependencies
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+* **Frontend Framework:** React.js (built with **Vite** for fast HMR and optimized builds)
+* **API Client:** **Axios** (for making HTTP requests to the backend REST API)
+* **Date & Time Formatting:** **Day.js** (for parsing, manipulating, and displaying order dates)
+* **UI Components & Icons:** **React Feather** (for clean, responsive vector icon sets)
+* **Language & Styling:** JavaScript (ES6+), HTML5, CSS3
+
+---
+
+## ⚙️ Project Setup & Installation
+
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
+
+### Instructions
+
+1. **Navigate to the frontend directory:**
+```bash
+   cd ecommerce-project
+
+#1_Install all dependencies:
+npm install
+#2_Start the development server:
+npm run dev
+#3_Open the local link provided by Vite
+ (http://localhost:5173) in your browser.
+
+
+## 👤 Author
+
+* **Abdullah Campoamor**
+* **LinkedIn:** [abdullah-campoamor](https://www.linkedin.com/in/abdullah-campoamor-a31530240/)
+* **Email:** abdallah10ca@gmail.com
