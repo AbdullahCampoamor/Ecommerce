@@ -1,20 +1,29 @@
 import "./checkout.css"
-import { HomeHeader } from "../components/home/HomeHeader"
-import { Footer } from "../components/common/Footer"
-import { OrderSummary } from "../components/checkout/OrderSummary"
-import { PaymentSummary } from "../components/checkout/PaymentSummary"
+import { HomeHeader } from "../../components/home/HomeHeader"
+import { Footer } from "../../components/common/Footer"
+import { OrderSummary } from "../../components/checkout/OrderSummary"
+import { PaymentSummary } from "../../components/checkout/PaymentSummary"
 import { useState, useEffect } from "react"
 import axios from "axios"
 
 export function Checkout({ cart, loadCart }) {
+
+
     const [deliveryOptions, setDeliveryOptions] = useState([]);
-    const getDeliveryOptions = async () => {
-        const response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime');
-        setDeliveryOptions(response.data);
-    }
+    const [paymentSummary, setPaymentSummary] = useState(null);
+
+
     useEffect(() => {
-        getDeliveryOptions();
-    }, [])
+        const fetchCheckoutData = async () => {
+            let response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime');
+            setDeliveryOptions(response.data);
+
+            response = await axios.get('/api/payment-summary');
+            setPaymentSummary(response.data);
+
+        }
+        fetchCheckoutData();
+    }, [cart])
 
 
     return (
@@ -32,7 +41,7 @@ export function Checkout({ cart, loadCart }) {
 
                         <div className="checkout-grid">
                             <OrderSummary cart={cart} deliveryOptions={deliveryOptions} loadCart={loadCart} />
-                            <PaymentSummary cart={cart} loadCart={loadCart} />
+                            <PaymentSummary cart={cart} loadCart={loadCart} paymentSummary={paymentSummary} />
                         </div>
                     </div>
                 </section>

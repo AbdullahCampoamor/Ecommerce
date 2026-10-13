@@ -3,18 +3,9 @@ import { useNavigate } from "react-router"
 import { useState, useEffect } from "react"
 import { formatMoney } from "../../utlis/money"
 
-export function PaymentSummary({ cart, loadCart }) {
+export function PaymentSummary({ cart, loadCart, paymentSummary }) {
 
-    const [paymentSummary, setPaymentSummary] = useState(null);
 
-    useEffect(() => {
-        const getPaymentSummary = async () => {
-            const response = await axios.get('/api/payment-summary');
-            setPaymentSummary(response.data);
-        }
-        getPaymentSummary();
-
-    }, [cart]);
     const navigate = useNavigate();
     const createOrder = async () => {
         await axios.post('/api/orders');

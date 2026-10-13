@@ -18,6 +18,7 @@ export function HomeHeader() {
 
                 <nav className="right-part">
                     <ul className="link-list">
+                        <li className="nav-link"><Link to="/">Home</Link></li>
                         <li className="nav-link"><Link to="/products">Products</Link></li>
                         <li className="nav-link"><Link to="/checkout">Cart</Link></li>
                         <li className="nav-link"><Link to="/orders">Orders</Link></li>

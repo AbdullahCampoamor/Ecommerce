@@ -1,5 +1,5 @@
-import { HomeHeader } from "../components/home/HomeHeader"
-import { Footer } from "../components/common/Footer"
+import { HomeHeader } from "../../components/home/HomeHeader"
+import { Footer } from "../../components/common/Footer"
 import "./login.css"
 
 export function Login() {

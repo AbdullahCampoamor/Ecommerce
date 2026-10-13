@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import dayjs from "dayjs"
-import { HomeHeader } from "../components/home/HomeHeader"
-import { Footer } from "../components/common/Footer"
-import { formatMoney } from "../utlis/money"
+import { HomeHeader } from "../../components/home/HomeHeader"
+import { Footer } from "../../components/common/Footer"
+import { formatMoney } from "../../utlis/money"
 import "./orders.css"
 
 export function Orders() {
