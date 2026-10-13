@@ -34,12 +34,16 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 1. **Navigate to the frontend directory:**
 ```bash
    cd ecommerce-project
-
-#1_Install all dependencies:
+```
+2. **Install all dependencies:**
+```bash
 npm install
-#2_Start the development server:
+```
+3. **Start the development server:**
+```bash
 npm run dev
-#3_Open the local link provided by Vite
+```
+Open the local link provided by Vite
  (http://localhost:5173) in your browser.
 
 
